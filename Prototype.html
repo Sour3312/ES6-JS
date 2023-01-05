@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=scri, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let person1 = {
+            age: 23,
+            lastName: "Doeu",
+            firstName: "daddy",
+            getAge: function () {
+                return this.age
+            }
+        };
+
+        let person = {
+            age: 90,
+            __proto__: person1      //objj as prototype
+        };
+
+        // console.log(person);
+        // console.log(person.lastName);
+        // console.log(person1.getAge());
+        // console.log(person1.age);
+
+        // #######################################################
+        //inheritence with JS
+        let obj1 = {
+            firstName: "1",
+            lastName: "11",
+            age: 111,
+            getAge: function () {
+                return this.height
+            }
+        };
+
+        let obj2 = {
+            height: 122,
+            getClass: function () {
+                return this.class
+            },
+            __proto__: obj1,
+        };
+
+        let obj3 = {
+            class: 'btech',
+            __proto__: obj2
+        };
+
+        // console.log(obj3);
+        // console.log(obj1.age);
+        // console.log(obj2.getAge());
+        // console.log(obj3.getClass());
+
+        // #######################################################
+        //check prototypes of object & array
+        let objectt = new Object();
+        // console.log(objectt);
+
+        let arrayy = new Array();
+        // console.log(arrayy);
+        //evertwhere we will get object lastly
+
+        // #######################################################
+        //polyfill() : the logic behind keyword
+        // create your own prototype here (srv,intoObject)
+
+        const fruit = ['mango', 'apple', 'yesh']
+
+        Array.prototype.srv = function () {
+            return this;
+        }
+        // console.log(fruit.srv());
+
+        Array.prototype.intoObject = function () {
+            let newObj = {}
+            this.forEach(val => {
+                newObj[val] = val
+            })
+            return newObj
+        }
+        // console.log(fruit.intoObject());
+
+        //can also call object here
+        Array.prototype.myObj = obj3
+        console.log(fruit.myObj.firstName);
+        console.log(fruit.myObj.lastName);
+        console.log(fruit.myObj.age);
+        console.log(fruit.myObj.getAge());
+        console.log(fruit.myObj.getClass());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currying</title>
+</head>
+
+<body>
+
+    <script>
+        // closure is complex way to call function inn=side function. to make it simple we can use /<Curriying>/ technique
+
+        // ###### normal way #######
+        function pen(a, b, c) {
+            return a + b + c
+        }
+        // console.log(pen(1, 2, 3));
+
+        // ****************************************************************************************************
+        // ###### using closures  #######
+        function pencil(x) {
+            return function rub(y) {
+                return function glass(z) {
+                    return x + y + z
+                }
+            }
+        }
+
+        let val1 = pencil(1)
+        let val2 = val1(2)
+        let val3 = val2(3)
+        // console.log(val3);
+
+        // ****************************************************************************************************
+        // ###### using currying #######
+        function pencil(x) {
+            return function rub(y) {
+                return function glass(z) {
+                    return x + y + z
+                }
+            }
+        }
+        // console.log(pencil(1)(2)(3));
+
+
+        // ###### currying with object #######
+        let objc = {
+            name: 'sourav',
+            age: 23,
+            company: 'mapmyindia'
+        }
+
+        function takeObj(obj) {
+            return function takeObj1(key) {
+                return obj[key]
+            }
+        }
+
+        let user = takeObj(objc)
+        let user1 = user('company')         //()()
+        // console.log(user1)
+
+
+
+        // ########## infinite currying ##########
+        function add(a) {
+            return function (b) {
+                if (b) return add(a + b)
+                return a
+            }
+        }
+        console.log(add(1)(2)(3)(4)(5)(6)(7)(8)(9)()); // take many parameter as you want to add
+
+        /*f(a)(b) implementation */
+        function f(a) {
+            return (b) => {
+               return a*b 
+            }
+        }
+        console.log(f(11)(2)) // works
+        console.log(f(1)); /* (b) => {return "Works" } */
+
+
+
+    </script>
+</body>
+
+</html>

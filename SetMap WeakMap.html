@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // ################ Set() ################
+        // it same like object but
+        //there is no duplicacy of data only unique values
+
+        let x = ['null']
+        let set = new Set(x)
+        console.log(set);
+        console.log(set.add(2));
+        console.log(set.values());
+        console.log(typeof set);
+
+        let y = { name: 'sourabh' }
+        // console.log(set.add(y));
+        // console.log(set.has(y));
+
+        // ################ Map() ################
+        // always have key value pair 
+        let map = new Map([['name', 'srv'], ['age', '122'], ['heigth', '3444cm'], ['alarm', 'clock']]);
+        // console.log(map);
+        // console.log(map.get('name'));
+        // console.log(map.delete('alarm'));
+        // console.log(map);
+        // console.log(typeof map);
+
+        map.forEach((a, b) => {
+            console.log(a, b);
+        })
+
+        // ################ WeakMap & WeakSet ################
+        // less prototypes(keyword) available over Map & Set 
+        // (*delete get has set*)
+        // no iteration like forEach
+
+        let WM = new WeakMap()
+        let WS = new WeakSet()
+
+        const obj={nme:'srv'}
+        const obj1={age:'34'}
+
+        console.log(WM);
+        console.log(WS);
+        console.log(WM.set(obj));
+        console.log(WM.has(1));
+        console.log(WM.delete(obj));
+
+
+
+    </script>
+
+</body>
+
+</html>

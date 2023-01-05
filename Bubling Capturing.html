@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div">
+        <h1 id="pp">
+            <button id="btn">
+                Event Bubling
+            </button>
+        </h1>
+    </div>
+
+    <div id="div1">
+        <p id="pp1">
+            <button id="btn1">
+                Event Capturing
+            </button>
+        </p>
+    </div>
+    <button id="h11">multiple event on same div</button>
+
+    <div>
+        <a id="anchor" href="mrf.html">Please visit Here </a>
+    </div>
+
+    <script>
+        // ########## event Bubling &  e.stopPropagation() ######### 
+        // child to parent
+        var a = document.getElementById('div')
+        var b = document.getElementById('btn')
+        var c = document.getElementById('pp')
+
+        a.addEventListener('click', (e) => {
+            // e.stopPropagation()
+            console.log('idv');
+        })
+
+        c.addEventListener('click', (e) => {
+            // e.stopPropagation()
+            console.log('p');
+        })
+
+        b.addEventListener('click', (e) => {
+            // e.stopPropagation()
+            console.log('btn');
+        })
+        // ****************************************************************************************************
+
+
+
+        // ########## event Capturing &  e.stopPropagation() #########
+        // parent to child 
+        var a1 = document.getElementById('div1')
+        var b1 = document.getElementById('btn1')
+        var c1 = document.getElementById('pp1')
+
+        a1.addEventListener('click', (e) => {
+            // e.stopPropagation() //stops here
+            console.log('idv');
+        }, true)
+
+        b1.addEventListener('click', (e) => {
+            // e.stopPropagation()
+            console.log('btn');
+        }, true)
+        c1.addEventListener('click', (e) => {
+            // e.stopPropagation()
+            console.log('p');
+        }, true)
+
+
+        // ****************************************************************************************************
+
+
+        // #############  e.stopImmediatePropagation() ################# 
+
+
+        // to stop multiple events applied on same element
+
+        var head = document.getElementById('h11')
+
+        head.addEventListener('click', (e) => {
+            // e.stopImmediatePropagation()
+            console.log('1');
+        })
+        head.addEventListener('click', (e) => {
+            e.stopImmediatePropagation()// imidiatly stops here
+            console.log('2');
+        })
+        head.addEventListener('click', (e) => {
+            // e.stopImmediatePropagation()
+            console.log('3');
+        })
+        head.addEventListener('click', (e) => {
+            // e.stopImmediatePropagation()
+            console.log('4');
+        })
+
+
+        // ****************************************************************************************************
+       
+        // ############# prevent Default() ###########
+        var an = document.getElementById('anchor')
+        an.addEventListener('click', (e) => {
+            e.preventDefault()// it will not refresh the page 
+            console.log('prevent');
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
