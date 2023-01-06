@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deboucing</title>
+</head>
+
+<body>
+
+    <!-- <input type="text" id="search"> -->
+    <script>
+        // ########### Debouncing ##########
+        // while typing >> function not called || typing stopped >> function called
+
+    //     const getBounce = () => {
+    //         console.log(1);
+    //     }
+    //     document.getElementById('search').addEventListener('click', deb())
+
+    //     function Debouce(call, d) {
+    //         let timer
+    //         return function () {
+    //             if (timer) clearTimeout(timer)
+    //             setTimeout(() => {
+    //                 call()
+    //             }, d);
+    //         }
+    //     }
+    //     var deb = Debouce(getBounce, 1000);
+    // </script>
+
+    <!-- # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  -->
+
+
+    <button id="thrt" onclick="throat()">throat</button>
+    <script>
+        // ########### Throatling ##########
+        // timer set - action perform or not function will run on specific time
+
+
+
+        const throatt = (callb, d) => {
+            return function (...args) {
+                document.getElementById('thrt').disabled = false
+                setTimeout(() => {
+                    callb()
+                }, d);
+            }
+        }
+
+        var throat = throatt(() => {
+            document.getElementById('thrt').disabled = true
+            console.log('1');
+        }, 1000);
+    </script>
+</body>
+
+</html>
